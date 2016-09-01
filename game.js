@@ -14,6 +14,7 @@ window.onload = function() {
 
             // Objects
             let objc = [
+                "shadow",
                 "bush",
                 "weed",
                 "barrel",
@@ -66,6 +67,7 @@ window.onload = function() {
             objects.enableBody = true
 
             this.spawnObjects("objects")
+            this.spawnObjects("collision")
 
             // Player
             let result = this.findObjects(this.map, "objects", "spawnPoint")
@@ -84,6 +86,11 @@ window.onload = function() {
             this.player.body.collideWorldBounds = true
             this.player.body.velocity.x = 0
             this.player.body.velocity.y = 0
+
+            // Modifier
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)) {
+                speed = 400
+            }
 
             // Vertical
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.W) || this.cursors.up.isDown) {
@@ -149,24 +156,21 @@ window.onload = function() {
                 }
             })
 
+            console.log(result)
             return result
         },
 
         // Create Sprite from Object
         createObject: function(element, group) {
-            let sprite = group.create(element.x, element.y, element.properties.sprite)
-
             if (element.properties) {
-                Object.keys(element.properties).forEach(function(key) {
-                    sprite[key] = element.properties[key]
-                })
-            }
-        },
+                if (element.properties.sprite) {
+                    let sprite = group.create(element.x, element.y, element.properties.sprite)
 
-        // Generate Random ID
-        generateID: function() {
-            function s4() { return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) }
-            return s4() + s4() + "-" + s4() + "-" + s4() + "-" +s4() + "-" + s4() + s4() + s4()
+                    Object.keys(element.properties).forEach(function(key) {
+                        sprite[key] = element.properties[key]
+                    })
+                }
+            }
         }
     })
 }
