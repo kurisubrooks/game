@@ -2,19 +2,14 @@ let objects
 let map
 
 window.onload = function() {
-    let game = new Phaser.Game(480, 320, Phaser.AUTO, "game", {
+    let game = new Phaser.Game(720, 480, Phaser.AUTO, "game", {
         preload: function() {
             // Map
-            this.load.tilemap("world", "assets/maps/overworld.json", null, Phaser.Tilemap.TILED_JSON)
-
-            // Spritesheet
-            this.load.image("spritesheet", "assets/sheet.png")
+            this.load.tilemap("world", "assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
+            this.load.image("spritesheet", "assets/sheets/rpg.png")
 
             // Images
-            this.load.image("player", "assets/dude.png")
-            this.load.image("sign", "assets/sprites/sign.png")
-            this.load.image("playerSpawn", "assets/sprites/playerSpawn.png")
-            this.load.image("goldCoins", "assets/sprites/goldCoins.png")
+            let player = this.load.image("player", "assets/player.png")
 
             this.game.time.advancedTiming = true
         },
@@ -24,15 +19,16 @@ window.onload = function() {
 
             // Load Map and Tileset
             this.map = this.game.add.tilemap("world")
-            this.map.addTilesetImage("sheet", "spritesheet")
+            this.map.addTilesetImage("rpg", "spritesheet")
             map = this.map
 
             // Add Map Layers
             this.backgroundlayer = this.map.createLayer("background")
-            this.underBlockedLayer = this.map.createLayer("physical_under")
+            this.underBlockedLayer = this.map.createLayer("underPhysical")
             this.blockedLayer = this.map.createLayer("physical")
 
             // Collission Layer
+            this.map.setCollisionBetween(1, 2000, true, "underPhysical")
             this.map.setCollisionBetween(1, 2000, true, "physical")
 
             // Resize Game World to match Map
@@ -58,20 +54,22 @@ window.onload = function() {
             this.cursors = this.game.input.keyboard.createCursorKeys()
         },
         update: function() {
+            let speed = 100
+
             this.player.body.collideWorldBounds = true
             this.player.body.velocity.x = 0
             this.player.body.velocity.y = 0
 
             if (this.cursors.up.isDown) {
-                this.player.body.velocity.y -= 50
+                this.player.body.velocity.y -= speed
             } else if (this.cursors.down.isDown) {
-                this.player.body.velocity.y += 50
+                this.player.body.velocity.y += speed
             }
 
             if (this.cursors.left.isDown) {
-                this.player.body.velocity.x -= 50
+                this.player.body.velocity.x -= speed
             } else if (this.cursors.right.isDown) {
-                this.player.body.velocity.x += 50
+                this.player.body.velocity.x += speed
             }
 
             // Collision Map
@@ -81,7 +79,7 @@ window.onload = function() {
         },
 
         render: function() {
-            this.game.debug.body(this.player)
+            //this.game.debug.body(this.player)
             this.game.debug.text(game.time.fps, 2, 15, "#FFFF00")
         },
 
