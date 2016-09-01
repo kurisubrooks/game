@@ -51,6 +51,9 @@ window.onload = function() {
 
             // Camera Follows Player
             this.game.camera.follow(this.player)
+
+            // Cursor (pointer keys)
+            this.cursors = this.game.input.keyboard.createCursorKeys()
         },
         update: function() {
             let speed = 200
@@ -59,15 +62,15 @@ window.onload = function() {
             this.player.body.velocity.x = 0
             this.player.body.velocity.y = 0
 
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.W)) {
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.W) || this.cursors.up.isDown) {
                 this.player.body.velocity.y -= speed
-            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.S)) {
+            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.S) || this.cursors.down.isDown) {
                 this.player.body.velocity.y += speed
             }
 
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.A)) {
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.cursors.left.isDown) {
                 this.player.body.velocity.x -= speed
-            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D)) {
+            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.cursors.right.isDown) {
                 this.player.body.velocity.x += speed
             }
 
