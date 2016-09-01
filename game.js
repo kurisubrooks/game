@@ -54,7 +54,7 @@ window.onload = function() {
             this.cursors = this.game.input.keyboard.createCursorKeys()
         },
         update: function() {
-            let speed = 100
+            let speed = 150
 
             this.player.body.collideWorldBounds = true
             this.player.body.velocity.x = 0
