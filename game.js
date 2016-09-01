@@ -2,7 +2,55 @@ let objects
 let map
 
 window.onload = function() {
-    let game = new Phaser.Game("100%", "100%", Phaser.AUTO, "game", {
+    let game = new Phaser.Game("100%", "100%", Phaser.CANVAS, "game", {
+        // Spawn Items
+        createItems: function() {
+            this.items = this.game.add.group()
+            this.items.enableBody = true
+
+            let item
+            let result = this.findObjectsByType(this.map, "objects", "item")
+            let results = []
+
+            result.forEach(function(element) {
+                this.createFromTiledObject(element, this.items)
+            }, this)
+        },
+
+        // Find Objects in a Layer containing property: type, equal to the given value
+        findObjectsByType: function(map, layer, type) {
+            let result = []
+
+            map.objects[layer].forEach(function(element) {
+                if (element.properties.type === type) {
+                    element.y -= map.tileHeight
+                    result.push(element)
+                }
+            })
+
+            return result
+        },
+
+        // Create Sprite from Object
+        createFromTiledObject: function(element, group) {
+            let sprite = group.create(element.x, element.y, element.properties.sprite)
+
+            if (element.properties) {
+                Object.keys(element.properties).forEach(function(key) {
+                    sprite[key] = element.properties[key]
+                })
+            }
+        },
+
+        // Generate Random ID
+        generateID: function() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
+            }
+
+            return s4() + s4() + "-" + s4() + "-" + s4() + "-" +s4() + "-" + s4() + s4() + s4()
+        },
+
         preload: function() {
             // Map
             this.load.tilemap("world", "assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
@@ -52,7 +100,7 @@ window.onload = function() {
 
         update: function() {
             // Movement
-            let speed = 200
+            let speed = 300
 
             this.player.body.collideWorldBounds = true
             this.player.body.velocity.x = 0
@@ -77,7 +125,7 @@ window.onload = function() {
 
         render: function() {
             // Player Bounds
-            this.game.debug.body(this.player)
+            //this.game.debug.body(this.player)
 
             // FPS
             this.game.debug.text(game.time.fps, 2, 15, "#FFFF00")
@@ -85,77 +133,6 @@ window.onload = function() {
 
         collect: function(player, collectable) {
             collectable.destroy()
-        },
-
-        /*spawnObjects: function(map, type) {
-            let layer = "objects"
-
-            this.load.image("sign", "assets/sprites/sign.png")
-        },
-
-        findObject: function(map, layer, type) {
-            let result = []
-
-            map.objects[layer].forEach(function(element) {
-                if (element.properties.type === type) {
-                    element.y -= map.tileHeight
-                    result.push(element)
-                }
-            })
-
-            return result
-        },*/
-
-        // Spawn Items
-        /*createItems: function() {
-            this.items = this.game.add.group()
-            this.items.enableBody = true
-
-            let item
-            let result = this.findObjectsByType(this.map, "objects", "item")
-            let results = []
-
-            result.forEach(function(element) {
-                this.createFromTiledObject(element, this.items)
-            }, this)
-        },*/
-
-        // Find Objects in a Layer containing property: type, equal to the given value
-        findObjectsByType: function(map, layer, type) {
-            let result = []
-
-            map.objects[layer].forEach(function(element) {
-                if (element.properties) {
-                    if (type) {
-                        if (element.properties.type === type) {
-                            element.y -= map.tileHeight
-                            result.push(element)
-                        }
-                    }
-                }
-            })
-
-            return result
-        },
-
-        // Create Sprite from Object
-        createFromTiledObject: function(element, group) {
-            let sprite = group.create(element.x, element.y, element.properties.sprite)
-
-            if (element.properties) {
-                Object.keys(element.properties).forEach(function(key) {
-                    sprite[key] = element.properties[key]
-                })
-            }
-        },
-
-        // Generate Random ID
-        generateID: function() {
-            function s4() {
-                return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
-            }
-
-            return s4() + s4() + "-" + s4() + "-" + s4() + "-" +s4() + "-" + s4() + s4() + s4()
         }
     })
 }
