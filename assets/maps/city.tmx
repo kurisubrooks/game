@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="64" tileheight="64" nextobjectid="137">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="64" tileheight="64" nextobjectid="178">
  <tileset firstgid="1" name="rpg" tilewidth="64" tileheight="64" tilecount="260" columns="20">
   <image source="../sheets/rpg.png" width="1280" height="832"/>
  </tileset>
@@ -27,6 +27,21 @@
 32,32,32,32,32,32,32,32,33,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 </data>
  </layer>
+ <objectgroup name="shadows">
+  <object id="81" gid="36" x="1684" y="1137" width="64" height="64"/>
+  <object id="82" gid="36" x="1656" y="1063" width="64" height="64"/>
+  <object id="83" gid="36" x="1746" y="1110" width="64" height="64"/>
+  <object id="85" gid="36" x="67.6667" y="345" width="64" height="64"/>
+  <object id="87" gid="36" x="199" y="351" width="64" height="64"/>
+  <object id="88" gid="36" x="1089.67" y="728.667" width="64" height="64"/>
+  <object id="89" gid="36" x="1065.67" y="709" width="64" height="64"/>
+  <object id="90" gid="36" x="1488.67" y="745" width="64" height="64"/>
+  <object id="91" gid="36" x="1465.33" y="728" width="64" height="64"/>
+  <object id="145" gid="36" x="1392" y="885" width="64" height="64"/>
+  <object id="150" gid="36" x="1354" y="921" width="64" height="64"/>
+  <object id="151" gid="36" x="1066" y="936" width="64" height="64"/>
+  <object id="159" gid="36" x="985" y="741" width="64" height="64"/>
+ </objectgroup>
  <layer name="buildings" width="30" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -51,41 +66,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer name="roof" width="30" height="20">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,123,124,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,121,143,144,122,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,141,143,144,142,0,0,121,122,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,141,163,164,142,0,0,161,162,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,161,0,0,162,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <objectgroup name="shadows">
-  <object id="81" gid="36" x="1684" y="1137" width="64" height="64"/>
-  <object id="82" gid="36" x="1656" y="1063" width="64" height="64"/>
-  <object id="83" gid="36" x="1746" y="1110" width="64" height="64"/>
-  <object id="85" gid="36" x="1038" y="701" width="64" height="64"/>
-  <object id="87" gid="36" x="199" y="351" width="64" height="64"/>
-  <object id="88" gid="36" x="1091" y="688" width="64" height="64"/>
-  <object id="89" gid="36" x="1108" y="713" width="64" height="64"/>
-  <object id="90" gid="36" x="1464" y="743" width="64" height="64"/>
-  <object id="91" gid="36" x="1486" y="728" width="64" height="64"/>
- </objectgroup>
  <objectgroup name="objects">
   <object id="1" name="playerSpawn" gid="36" x="64" y="512" width="64" height="64">
    <properties>
@@ -147,43 +127,43 @@
     <property name="type" value="barrier"/>
    </properties>
   </object>
-  <object id="41" name="basket" gid="249" x="1487" y="720" width="64" height="64">
+  <object id="41" name="basket" gid="249" x="1467" y="718.667" width="64" height="64">
    <properties>
     <property name="sprite" value="basket"/>
     <property name="type" value="storage"/>
    </properties>
   </object>
-  <object id="42" name="basket" gid="249" x="1465" y="735" width="64" height="64">
+  <object id="42" name="basket" gid="249" x="1489" y="734.333" width="64" height="64">
    <properties>
     <property name="sprite" value="basket"/>
     <property name="type" value="storage"/>
    </properties>
   </object>
-  <object id="43" name="crate" gid="190" x="1168" y="818" width="64" height="64">
+  <object id="43" name="crate" gid="190" x="1328" y="796.667" width="64" height="64">
    <properties>
     <property name="sprite" value="crate"/>
     <property name="type" value="storage"/>
    </properties>
   </object>
-  <object id="47" name="barrel" gid="210" x="1090" y="680" width="64" height="64">
+  <object id="47" name="barrel" gid="210" x="1065.33" y="699.667" width="64" height="64">
    <properties>
     <property name="sprite" value="barrel"/>
     <property name="type" value="storage"/>
    </properties>
   </object>
-  <object id="48" name="barrel" gid="210" x="1106" y="704" width="64" height="64">
+  <object id="48" name="barrel" gid="210" x="1089.33" y="720.667" width="64" height="64">
    <properties>
     <property name="sprite" value="barrel"/>
     <property name="type" value="storage"/>
    </properties>
   </object>
-  <object id="49" name="treeBase" gid="223" x="1038" y="691" width="64" height="64">
+  <object id="49" name="treeBase" gid="223" x="67.3333" y="333.667" width="64" height="64">
    <properties>
     <property name="sprite" value="treeBase2"/>
     <property name="type" value="shrub"/>
    </properties>
   </object>
-  <object id="50" name="treeTop" gid="203" x="1038" y="627" width="64" height="64">
+  <object id="50" name="treeTop" gid="203" x="66.6667" y="269.667" width="64" height="64">
    <properties>
     <property name="sprite" value="treeTop2"/>
     <property name="type" value="shrub"/>
@@ -339,7 +319,175 @@
     <property name="type" value="shrub"/>
    </properties>
   </object>
+  <object id="137" gid="185" x="1097.33" y="659.333" width="64" height="64">
+   <properties>
+    <property name="sprite" value="bush"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="140" name="crate" gid="189" x="1163.67" y="815" width="64" height="64">
+   <properties>
+    <property name="sprite" value="crateLarge"/>
+    <property name="type" value="storage"/>
+   </properties>
+  </object>
+  <object id="141" name="weed" gid="182" x="1188" y="843.667" width="64" height="64">
+   <properties>
+    <property name="sprite" value="weed"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="146" name="treeTop" gid="201" x="1393" y="809" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeTop"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="147" name="treeBase" gid="221" x="1392" y="873" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeBase"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="148" name="treeBase" gid="222" x="1355" y="908" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeBaseSmall"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="149" name="treeTop" gid="202" x="1355" y="844" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeTopSmall"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="152" name="treeBase" gid="222" x="1067" y="923" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeBaseSmall"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="153" name="treeTop" gid="202" x="1067" y="859" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeTopSmall"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="154" name="treeTop" gid="204" x="985.333" y="664" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeTop2"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="155" name="treeBase" gid="224" x="985.333" y="728" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeBase2"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="160" gid="36" x="1023.83" y="694.333" width="64" height="64"/>
+  <object id="161" name="treeBase" gid="223" x="1023.49" y="683" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeBase2"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="162" name="treeTop" gid="203" x="1022.83" y="619" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeTop2"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="163" gid="36" x="114.167" y="313.667" width="64" height="64"/>
+  <object id="164" name="treeBase" gid="223" x="113.833" y="302.334" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeBase2"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="165" name="treeTop" gid="203" x="113.167" y="238.334" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeTop2"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="166" name="treeTop" gid="204" x="271.5" y="185.5" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeTop2"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="167" name="treeBase" gid="224" x="271.5" y="249.5" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeBase2"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="168" gid="36" x="271.167" y="262.5" width="64" height="64"/>
+  <object id="169" name="treeBase" gid="221" x="117.167" y="726.167" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeBase"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="170" gid="36" x="116.167" y="737.167" width="64" height="64"/>
+  <object id="171" name="treeTop" gid="201" x="117.167" y="662.167" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeTop"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="172" gid="36" x="75.5" y="781.167" width="64" height="64"/>
+  <object id="173" name="treeBase" gid="221" x="76.5" y="770.167" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeBase"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="174" name="treeTop" gid="201" x="76.5" y="706.167" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeTop"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="175" gid="36" x="-13.1667" y="723.167" width="64" height="64"/>
+  <object id="176" name="treeBase" gid="222" x="-12.1667" y="710.167" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeBaseSmall"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
+  <object id="177" name="treeTop" gid="202" x="-12.1667" y="646.167" width="64" height="64">
+   <properties>
+    <property name="sprite" value="treeTopSmall"/>
+    <property name="type" value="shrub"/>
+   </properties>
+  </object>
  </objectgroup>
+ <layer name="roof" width="30" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,123,124,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,121,143,144,122,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,141,143,144,142,0,0,121,122,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,141,163,164,142,0,0,161,162,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,161,0,0,162,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
  <objectgroup name="collision">
   <object id="51" x="1218" y="767" width="31" height="63"/>
   <object id="52" x="1308" y="767" width="32" height="63"/>
