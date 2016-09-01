@@ -2,7 +2,7 @@ let objects
 let map
 
 window.onload = function() {
-    let game = new Phaser.Game(1280, 720, Phaser.AUTO, "game", {
+    let game = new Phaser.Game("100%", "100%", Phaser.AUTO, "game", {
         preload: function() {
             // Map
             this.load.tilemap("world", "assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
@@ -26,10 +26,12 @@ window.onload = function() {
             this.backgroundlayer = this.map.createLayer("background")
             this.underBlockedLayer = this.map.createLayer("underPhysical")
             this.blockedLayer = this.map.createLayer("physical")
+            this.toplayer = this.map.createLayer("top")
 
             // Collission Layer
             this.map.setCollisionBetween(1, 2000, true, "underPhysical")
             this.map.setCollisionBetween(1, 2000, true, "physical")
+            this.map.setCollisionBetween(1, 2000, true, "top")
 
             // Resize Game World to match Map
             this.backgroundlayer.resizeWorld()
@@ -49,33 +51,30 @@ window.onload = function() {
 
             // Camera Follows Player
             this.game.camera.follow(this.player)
-
-            // Move Player (with arrow keys)
-            this.cursors = this.game.input.keyboard.createCursorKeys()
         },
         update: function() {
-            let speed = 150
+            let speed = 200
 
             this.player.body.collideWorldBounds = true
             this.player.body.velocity.x = 0
             this.player.body.velocity.y = 0
 
-            if (this.cursors.up.isDown) {
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.W)) {
                 this.player.body.velocity.y -= speed
-            } else if (this.cursors.down.isDown) {
+            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.S)) {
                 this.player.body.velocity.y += speed
             }
 
-            if (this.cursors.left.isDown) {
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.A)) {
                 this.player.body.velocity.x -= speed
-            } else if (this.cursors.right.isDown) {
+            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D)) {
                 this.player.body.velocity.x += speed
             }
 
             // Collision Map
             this.game.physics.arcade.collide(this.player, this.blockedLayer)
             this.game.physics.arcade.collide(this.player, this.underBlockedLayer)
-            this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this)
+            //this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this)
         },
 
         render: function() {
