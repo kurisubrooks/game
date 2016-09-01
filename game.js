@@ -2,7 +2,7 @@ let objects
 let map
 
 window.onload = function() {
-    let game = new Phaser.Game(720, 480, Phaser.AUTO, "game", {
+    let game = new Phaser.Game(1280, 720, Phaser.AUTO, "game", {
         preload: function() {
             // Map
             this.load.tilemap("world", "assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
