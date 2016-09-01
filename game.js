@@ -1,4 +1,5 @@
-let objects
+let objects = {}
+let layers = {}
 let map
 
 window.onload = function() {
@@ -22,9 +23,11 @@ window.onload = function() {
             let result = []
 
             map.objects[layer].forEach(function(element) {
-                if (element.properties.type === type) {
-                    element.y -= map.tileHeight
-                    result.push(element)
+                if (element.properties) {
+                    if (element.properties.type === type) {
+                        element.y -= map.tileHeight
+                        result.push(element)
+                    }
                 }
             })
 
@@ -70,22 +73,24 @@ window.onload = function() {
             this.map.addTilesetImage("rpg", "spritesheet")
             map = this.map
 
-            this.backgroundlayer = this.map.createLayer("background")
-            this.underBlockedLayer = this.map.createLayer("underPhysical")
-            this.blockedLayer = this.map.createLayer("physical")
-            this.toplayer = this.map.createLayer("top")
+            // Tiles
+            layers.base = this.map.createLayer("base")
+            layers.buildings = this.map.createLayer("buildings")
+            layers.roof = this.map.createLayer("roof")
 
-            this.map.setCollisionBetween(1, 2000, true, "underPhysical")
-            this.map.setCollisionBetween(1, 2000, true, "physical")
-            this.map.setCollisionBetween(1, 2000, true, "top")
+            // Objects
+            layers.shadows = this.map.createLayer("shadows")
+            layers.objects = this.map.createLayer("objects")
+            layers.collision = this.map.createLayer("collision")
 
-            this.backgroundlayer.resizeWorld()
+            //this.map.setCollisionBetween(1, 2000, true, "collision")
+            layers.base.resizeWorld()
 
             let objects = this.game.add.group()
                 objects.enableBody = true
 
             this.map.objects.objects.forEach(function(element) {
-                map.createFromObjects(element.name, element.gid, element.properties.sprite, 0, true, false, objects)
+                map.createFromObjects(element.name, element.gid)
             })
 
             // Player
@@ -100,18 +105,20 @@ window.onload = function() {
 
         update: function() {
             // Movement
-            let speed = 300
+            let speed = 250
 
             this.player.body.collideWorldBounds = true
             this.player.body.velocity.x = 0
             this.player.body.velocity.y = 0
 
+            // Vertical
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.W) || this.cursors.up.isDown) {
                 this.player.body.velocity.y -= speed
             } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.S) || this.cursors.down.isDown) {
                 this.player.body.velocity.y += speed
             }
 
+            // Horizontal
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.cursors.left.isDown) {
                 this.player.body.velocity.x -= speed
             } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.cursors.right.isDown) {
@@ -131,8 +138,8 @@ window.onload = function() {
             this.game.debug.text(game.time.fps, 2, 15, "#FFFF00")
         },
 
-        collect: function(player, collectable) {
-            collectable.destroy()
+        collect: function(player, item) {
+            item.destroy()
         }
     })
 }
