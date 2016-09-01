@@ -182,7 +182,17 @@
                  "gid":221,
                  "height":64,
                  "id":28,
-                 "name":"",
+                 "name":"treeBase",
+                 "properties":
+                    {
+                     "sprite":"treeBase",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -194,7 +204,17 @@
                  "gid":201,
                  "height":64,
                  "id":29,
-                 "name":"",
+                 "name":"treeTop",
+                 "properties":
+                    {
+                     "sprite":"treeTop",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -206,14 +226,16 @@
                  "gid":215,
                  "height":64,
                  "id":30,
-                 "name":"",
+                 "name":"door",
                  "properties":
                     {
+                     "sprite":"door",
                      "teleport":"building7",
                      "type":"door"
                     },
                  "propertytypes":
                     {
+                     "sprite":"string",
                      "teleport":"string",
                      "type":"string"
                     },
@@ -228,7 +250,17 @@
                  "gid":191,
                  "height":64,
                  "id":31,
-                 "name":"",
+                 "name":"window",
+                 "properties":
+                    {
+                     "sprite":"window",
+                     "type":"window"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -240,7 +272,17 @@
                  "gid":228,
                  "height":64,
                  "id":36,
-                 "name":"",
+                 "name":"fence",
+                 "properties":
+                    {
+                     "sprite":"fenceLeft",
+                     "type":"barrier"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -252,7 +294,17 @@
                  "gid":228,
                  "height":64,
                  "id":37,
-                 "name":"",
+                 "name":"fence",
+                 "properties":
+                    {
+                     "sprite":"fenceLeft",
+                     "type":"barrier"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -264,7 +316,17 @@
                  "gid":228,
                  "height":64,
                  "id":38,
-                 "name":"",
+                 "name":"fence",
+                 "properties":
+                    {
+                     "sprite":"fenceLeft",
+                     "type":"barrier"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -276,7 +338,17 @@
                  "gid":208,
                  "height":64,
                  "id":39,
-                 "name":"",
+                 "name":"fence",
+                 "properties":
+                    {
+                     "sprite":"fenceRight",
+                     "type":"barrier"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -288,7 +360,17 @@
                  "gid":208,
                  "height":64,
                  "id":40,
-                 "name":"",
+                 "name":"fence",
+                 "properties":
+                    {
+                     "sprite":"fenceRight",
+                     "type":"barrier"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -300,7 +382,17 @@
                  "gid":249,
                  "height":64,
                  "id":41,
-                 "name":"",
+                 "name":"basket",
+                 "properties":
+                    {
+                     "sprite":"basket",
+                     "type":"storage"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -312,7 +404,17 @@
                  "gid":249,
                  "height":64,
                  "id":42,
-                 "name":"",
+                 "name":"basket",
+                 "properties":
+                    {
+                     "sprite":"basket",
+                     "type":"storage"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -324,7 +426,17 @@
                  "gid":190,
                  "height":64,
                  "id":43,
-                 "name":"",
+                 "name":"crate",
+                 "properties":
+                    {
+                     "sprite":"crate",
+                     "type":"storage"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -336,7 +448,17 @@
                  "gid":210,
                  "height":64,
                  "id":47,
-                 "name":"",
+                 "name":"barrel",
+                 "properties":
+                    {
+                     "sprite":"barrel",
+                     "type":"storage"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -348,7 +470,17 @@
                  "gid":210,
                  "height":64,
                  "id":48,
-                 "name":"",
+                 "name":"barrel",
+                 "properties":
+                    {
+                     "sprite":"barrel",
+                     "type":"storage"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -360,7 +492,17 @@
                  "gid":223,
                  "height":64,
                  "id":49,
-                 "name":"",
+                 "name":"treeBase",
+                 "properties":
+                    {
+                     "sprite":"treeBase2",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -372,7 +514,17 @@
                  "gid":203,
                  "height":64,
                  "id":50,
-                 "name":"",
+                 "name":"treeTop",
+                 "properties":
+                    {
+                     "sprite":"treeTop2",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -384,7 +536,17 @@
                  "gid":189,
                  "height":64,
                  "id":54,
-                 "name":"",
+                 "name":"crate",
+                 "properties":
+                    {
+                     "sprite":"crateLarge",
+                     "type":"storage"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -396,7 +558,17 @@
                  "gid":229,
                  "height":64,
                  "id":55,
-                 "name":"",
+                 "name":"barrel",
+                 "properties":
+                    {
+                     "sprite":"barrelWood",
+                     "type":"storage"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -408,7 +580,17 @@
                  "gid":185,
                  "height":64,
                  "id":56,
-                 "name":"",
+                 "name":"bush",
+                 "properties":
+                    {
+                     "sprite":"bush",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -420,7 +602,17 @@
                  "gid":185,
                  "height":64,
                  "id":57,
-                 "name":"",
+                 "name":"bush",
+                 "properties":
+                    {
+                     "sprite":"bush",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -432,7 +624,17 @@
                  "gid":185,
                  "height":64,
                  "id":58,
-                 "name":"",
+                 "name":"bush",
+                 "properties":
+                    {
+                     "sprite":"bush",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -444,7 +646,17 @@
                  "gid":185,
                  "height":64,
                  "id":59,
-                 "name":"",
+                 "name":"bush",
+                 "properties":
+                    {
+                     "sprite":"bush",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -456,7 +668,17 @@
                  "gid":185,
                  "height":64,
                  "id":60,
-                 "name":"",
+                 "name":"bush",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -468,7 +690,17 @@
                  "gid":185,
                  "height":64,
                  "id":61,
-                 "name":"",
+                 "name":"bush",
+                 "properties":
+                    {
+                     "sprite":"bush",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -480,7 +712,17 @@
                  "gid":182,
                  "height":64,
                  "id":62,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -492,7 +734,17 @@
                  "gid":182,
                  "height":64,
                  "id":63,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -504,7 +756,17 @@
                  "gid":182,
                  "height":64,
                  "id":64,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -516,7 +778,17 @@
                  "gid":182,
                  "height":64,
                  "id":65,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -528,7 +800,17 @@
                  "gid":182,
                  "height":64,
                  "id":66,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -540,7 +822,17 @@
                  "gid":182,
                  "height":64,
                  "id":67,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -552,7 +844,17 @@
                  "gid":182,
                  "height":64,
                  "id":68,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -564,7 +866,17 @@
                  "gid":182,
                  "height":64,
                  "id":69,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -576,7 +888,17 @@
                  "gid":182,
                  "height":64,
                  "id":70,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -588,7 +910,17 @@
                  "gid":182,
                  "height":64,
                  "id":71,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -600,7 +932,17 @@
                  "gid":221,
                  "height":64,
                  "id":73,
-                 "name":"",
+                 "name":"treeBase",
+                 "properties":
+                    {
+                     "sprite":"treeBase",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -612,7 +954,17 @@
                  "gid":201,
                  "height":64,
                  "id":74,
-                 "name":"",
+                 "name":"treeTop",
+                 "properties":
+                    {
+                     "sprite":"treeTop",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -624,7 +976,17 @@
                  "gid":221,
                  "height":64,
                  "id":75,
-                 "name":"",
+                 "name":"treeBase",
+                 "properties":
+                    {
+                     "sprite":"treeBase",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -636,7 +998,17 @@
                  "gid":201,
                  "height":64,
                  "id":76,
-                 "name":"",
+                 "name":"treeTop",
+                 "properties":
+                    {
+                     "sprite":"treeTop",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -648,7 +1020,17 @@
                  "gid":222,
                  "height":64,
                  "id":77,
-                 "name":"",
+                 "name":"treeBase",
+                 "properties":
+                    {
+                     "sprite":"treeBaseSmall",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -660,7 +1042,17 @@
                  "gid":202,
                  "height":64,
                  "id":78,
-                 "name":"",
+                 "name":"treeTop",
+                 "properties":
+                    {
+                     "sprite":"treeTopSmall",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -672,7 +1064,17 @@
                  "gid":182,
                  "height":64,
                  "id":80,
-                 "name":"",
+                 "name":"weed",
+                 "properties":
+                    {
+                     "sprite":"weed",
+                     "type":"shrub"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite":"string",
+                     "type":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
