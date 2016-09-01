@@ -7,55 +7,51 @@ window.onload = function() {
             // Map
             this.load.tilemap("world", "assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
             this.load.image("spritesheet", "assets/sheets/rpg.png")
+            this.load.image("player", "assets/player.png")
 
-            // Images
-            let player = this.load.image("player", "assets/player.png")
-
+            // Debug
             this.game.time.advancedTiming = true
         },
+
         create: function() {
-            // Create Physics
+            // Physics
             this.game.physics.startSystem(Phaser.Physics.ARCADE)
 
-            // Load Map and Tileset
+            // Map
             this.map = this.game.add.tilemap("world")
             this.map.addTilesetImage("rpg", "spritesheet")
             map = this.map
 
-            // Add Map Layers
             this.backgroundlayer = this.map.createLayer("background")
             this.underBlockedLayer = this.map.createLayer("underPhysical")
             this.blockedLayer = this.map.createLayer("physical")
             this.toplayer = this.map.createLayer("top")
 
-            // Collission Layer
             this.map.setCollisionBetween(1, 2000, true, "underPhysical")
             this.map.setCollisionBetween(1, 2000, true, "physical")
             this.map.setCollisionBetween(1, 2000, true, "top")
 
-            // Resize Game World to match Map
             this.backgroundlayer.resizeWorld()
 
-            // Spawn Overworld Objects
             let objects = this.game.add.group()
-            //objects.enableBody = true
+                objects.enableBody = true
 
             this.map.objects.objects.forEach(function(element) {
                 map.createFromObjects(element.name, element.gid, element.properties.sprite, 0, true, false, objects)
             })
 
-            // Create Player
+            // Player
             let result = this.findObjectsByType(this.map, "objects", "spawnPoint")
             this.player = this.game.add.sprite(result[0].x, result[0].y, "player")
             this.game.physics.arcade.enable(this.player)
-
-            // Camera Follows Player
             this.game.camera.follow(this.player)
 
-            // Cursor (pointer keys)
+            // Movement
             this.cursors = this.game.input.keyboard.createCursorKeys()
         },
+
         update: function() {
+            // Movement
             let speed = 200
 
             this.player.body.collideWorldBounds = true
@@ -74,21 +70,20 @@ window.onload = function() {
                 this.player.body.velocity.x += speed
             }
 
-            // Collision Map
+            // Collision
             this.game.physics.arcade.collide(this.player, this.blockedLayer)
             this.game.physics.arcade.collide(this.player, this.underBlockedLayer)
-            //this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this)
         },
 
         render: function() {
-            //this.game.debug.body(this.player)
+            // Player Bounds
+            this.game.debug.body(this.player)
+
+            // FPS
             this.game.debug.text(game.time.fps, 2, 15, "#FFFF00")
         },
 
         collect: function(player, collectable) {
-            console.log("Player collected Collectable")
-
-            // Destroy Sprite
             collectable.destroy()
         },
 
