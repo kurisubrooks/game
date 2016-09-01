@@ -42,7 +42,7 @@
                  "gid":36,
                  "height":64,
                  "id":1,
-                 "name":"",
+                 "name":"playerSpawn",
                  "properties":
                     {
                      "type":"spawnPoint"
