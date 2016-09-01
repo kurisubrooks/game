@@ -1,0 +1,22 @@
+{
+    "objects": [
+        "bush",
+        "weed",
+        "barrel",
+        "barrelWood",
+        "basket",
+        "crate",
+        "crateLarge",
+        "door",
+        "window",
+        "fence",
+        "fenceLeft",
+        "fenceRight",
+        "treeBase",
+        "treeBase2",
+        "treeBaseSmall",
+        "treeTop",
+        "treeTop2",
+        "treeTopSmall"
+    ]
+}
