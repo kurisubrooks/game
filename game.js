@@ -1,64 +1,40 @@
-let objects = {}
 let layers = {}
+let objects
 let map
 
 window.onload = function() {
     let game = new Phaser.Game("100%", "100%", Phaser.CANVAS, "game", {
-        // Spawn Items
-        createItems: function() {
-            this.items = this.game.add.group()
-            this.items.enableBody = true
-
-            let item
-            let result = this.findObjectsByType(this.map, "objects", "item")
-            let results = []
-
-            result.forEach(function(element) {
-                this.createFromTiledObject(element, this.items)
-            }, this)
-        },
-
-        // Find Objects in a Layer containing property: type, equal to the given value
-        findObjectsByType: function(map, layer, type) {
-            let result = []
-
-            map.objects[layer].forEach(function(element) {
-                if (element.properties) {
-                    if (element.properties.type === type) {
-                        element.y -= map.tileHeight
-                        result.push(element)
-                    }
-                }
-            })
-
-            return result
-        },
-
-        // Create Sprite from Object
-        createFromTiledObject: function(element, group) {
-            let sprite = group.create(element.x, element.y, element.properties.sprite)
-
-            if (element.properties) {
-                Object.keys(element.properties).forEach(function(key) {
-                    sprite[key] = element.properties[key]
-                })
-            }
-        },
-
-        // Generate Random ID
-        generateID: function() {
-            function s4() {
-                return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
-            }
-
-            return s4() + s4() + "-" + s4() + "-" + s4() + "-" +s4() + "-" + s4() + s4() + s4()
-        },
-
         preload: function() {
+            let preload = this
+
             // Map
             this.load.tilemap("world", "assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
             this.load.image("spritesheet", "assets/sheets/rpg.png")
             this.load.image("player", "assets/player.png")
+
+            // Objects
+            let objc = [
+                "bush",
+                "weed",
+                "barrel",
+                "barrelWood",
+                "basket",
+                "crate",
+                "crateLarge",
+                "door",
+                "window",
+                "fence",
+                "fenceLeft",
+                "fenceRight",
+                "treeBase",
+                "treeBase2",
+                "treeBaseSmall",
+                "treeTop",
+                "treeTop2",
+                "treeTopSmall"
+            ].forEach(function(sprite) {
+                preload.load.image(sprite, "assets/sprites/" + sprite + ".png")
+            })
 
             // Debug
             this.game.time.advancedTiming = true
@@ -86,15 +62,13 @@ window.onload = function() {
             //this.map.setCollisionBetween(1, 2000, true, "collision")
             layers.base.resizeWorld()
 
-            let objects = this.game.add.group()
-                objects.enableBody = true
+            objects = this.game.add.group()
+            objects.enableBody = true
 
-            this.map.objects.objects.forEach(function(element) {
-                map.createFromObjects(element.name, element.gid)
-            })
+            this.spawnObjects("objects")
 
             // Player
-            let result = this.findObjectsByType(this.map, "objects", "spawnPoint")
+            let result = this.findObjects(this.map, "objects", "spawnPoint")
             this.player = this.game.add.sprite(result[0].x, result[0].y, "player")
             this.game.physics.arcade.enable(this.player)
             this.game.camera.follow(this.player)
@@ -140,6 +114,59 @@ window.onload = function() {
 
         collect: function(player, item) {
             item.destroy()
+        },
+
+        /*
+         * Helper
+         * Functions
+         */
+
+        // Spawn Items
+        spawnObjects: function(layer) {
+            let item
+            let result = this.findObjects(this.map, layer)
+
+            result.forEach(function(element) {
+                this.createObject(element, objects)
+            }, this)
+        },
+
+        // Find Objects in a Layer containing property: type, equal to the given value
+        findObjects: function(map, layer, type) {
+            let result = []
+
+            map.objects[layer].forEach(function(element) {
+                if (element.properties) {
+                    if (type) {
+                        if (element.properties.type === type) {
+                            element.y -= map.tileHeight
+                            result.push(element)
+                        }
+                    } else {
+                        element.y -= map.tileHeight
+                        result.push(element)
+                    }
+                }
+            })
+
+            return result
+        },
+
+        // Create Sprite from Object
+        createObject: function(element, group) {
+            let sprite = group.create(element.x, element.y, element.properties.sprite)
+
+            if (element.properties) {
+                Object.keys(element.properties).forEach(function(key) {
+                    sprite[key] = element.properties[key]
+                })
+            }
+        },
+
+        // Generate Random ID
+        generateID: function() {
+            function s4() { return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) }
+            return s4() + s4() + "-" + s4() + "-" + s4() + "-" +s4() + "-" + s4() + s4() + s4()
         }
     })
 }
