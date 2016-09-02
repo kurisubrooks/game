@@ -291,7 +291,7 @@
                  "properties":
                     {
                      "sprite":"window",
-                     "type":"window"
+                     "type":"decoration"
                     },
                  "propertytypes":
                     {
@@ -2313,6 +2313,50 @@
                  "width":23.3333333333333,
                  "x":1880,
                  "y":248.666666666667
+                }, 
+                {
+                 "height":37,
+                 "id":212,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":12.5,
+                 "x":1139,
+                 "y":573.5
+                }, 
+                {
+                 "height":37,
+                 "id":213,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":12.5,
+                 "x":960.5,
+                 "y":573
+                }, 
+                {
+                 "height":35.5,
+                 "id":214,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":13,
+                 "x":1406,
+                 "y":662.5
+                }, 
+                {
+                 "height":35,
+                 "id":215,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":15,
+                 "x":1523,
+                 "y":663
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2321,7 +2365,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":211,
+ "nextobjectid":216,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":64,
