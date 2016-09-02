@@ -1,3 +1,39 @@
+let config = {
+    debug: false,
+    player: {
+        speed: 250,
+        stamina: 100
+    },
+    types: [
+        "spawnPoint",
+        "barrier",
+        "decoration",
+        "door",
+        "shrub",
+        "storage"
+    ],
+    objects: [
+        "bush",
+        "weed",
+        "barrel",
+        "barrelWood",
+        "basket",
+        "crate",
+        "crateLarge",
+        "door",
+        "window",
+        "fence",
+        "fenceLeft",
+        "fenceRight",
+        "treeBase",
+        "treeBase2",
+        "treeBaseSmall",
+        "treeTop",
+        "treeTop2",
+        "treeTopSmall"
+    ]
+}
+
 let objects
 let cursors
 let player
@@ -13,7 +49,7 @@ window.onload = function() {
 
     function preload() {
         // Plugins
-        //game.add.plugin(Phaser.Plugin.Debug)
+        if (config.debug) game.add.plugin(Phaser.Plugin.Debug)
         game.add.plugin(Phaser.Plugin.Tiled)
 
         let cacheKey = Phaser.Plugin.Tiled.utils.cacheKey
@@ -26,26 +62,7 @@ window.onload = function() {
         game.load.image("player", "src/assets/player.png")
 
         // Objects
-        let objects = [
-            "bush",
-            "weed",
-            "barrel",
-            "barrelWood",
-            "basket",
-            "crate",
-            "crateLarge",
-            "door",
-            "window",
-            "fence",
-            "fenceLeft",
-            "fenceRight",
-            "treeBase",
-            "treeBase2",
-            "treeBaseSmall",
-            "treeTop",
-            "treeTop2",
-            "treeTopSmall"
-        ].forEach(function(sprite) {
+        config.objects.forEach(function(sprite) {
             game.load.image(sprite, "src/assets/sprites/" + sprite + ".png")
         })
 
@@ -83,34 +100,47 @@ window.onload = function() {
 
     function update() {
         // Movement
-        let speed = 250
-
         player.body.collideWorldBounds = true
         player.body.fixedRotation = true
         player.body.velocity.x = 0
         player.body.velocity.y = 0
 
-        // Modifier
-        if (game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)) {
-            speed = 400
-        }
-
         // Vertical
-        if (game.input.keyboard.isDown(Phaser.Keyboard.W) || cursors.up.isDown) {
-            player.body.velocity.y -= speed
-        } else if (game.input.keyboard.isDown(Phaser.Keyboard.S) || cursors.down.isDown) {
-            player.body.velocity.y += speed
+        if (game.input.keyboard.isDown(Phaser.Keyboard.W)) {
+            player.body.velocity.y -= config.player.speed
+        } else if (game.input.keyboard.isDown(Phaser.Keyboard.S)) {
+            player.body.velocity.y += config.player.speed
         }
 
         // Horizontal
-        if (game.input.keyboard.isDown(Phaser.Keyboard.A) || cursors.left.isDown) {
-            player.body.velocity.x -= speed
-        } else if (game.input.keyboard.isDown(Phaser.Keyboard.D) || cursors.right.isDown) {
-            player.body.velocity.x += speed
+        if (game.input.keyboard.isDown(Phaser.Keyboard.A)) {
+            player.body.velocity.x -= config.player.speed
+        } else if (game.input.keyboard.isDown(Phaser.Keyboard.D)) {
+            player.body.velocity.x += config.player.speed
         }
 
-        if (game.input.keyboard.isDown(Phaser.Keyboard.ESC)) {
-            player.kill()
+        // Stamina + Running
+        let keyboard = game.input.keyboard
+        let key = Phaser.Keyboard
+
+        if (keyboard.isDown(key.W) || keyboard.isDown(key.A) || keyboard.isDown(key.S) || keyboard.isDown(key.D)) {
+            if (keyboard.isDown(key.SHIFT)) {
+                if (config.player.stamina > 0) {
+                    console.log("running")
+                    config.player.speed = 400
+                    config.player.stamina -= 0.5
+                } else {
+                    console.log("exhausted")
+                    config.player.speed = 250
+                }
+            } else {
+                console.log("walking")
+                config.player.speed = 250
+
+                if (config.player.stamina !== 100) {
+                    config.player.stamina += 0.1
+                }
+            }
         }
     }
 
@@ -120,7 +150,9 @@ window.onload = function() {
         game.debug.body(objects)
 
         // FPS
-        game.debug.text(game.time.fps, 2, 15, "#FFFF00")
+        game.debug.text("FPS: " + game.time.fps, 2, 15, "#FFFF00")
+        game.debug.text("Speed: " + config.player.speed, 2, 35, "#FFFF00")
+        game.debug.text("Stamina: " + config.player.stamina, 2, 55, "#FFFF00")
     }
 
     function spawnObjects(layer) {
