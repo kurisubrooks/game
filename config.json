@@ -1,4 +1,12 @@
 {
+    "types": [
+        "spawnPoint",
+        "barrier",
+        "decoration",
+        "door",
+        "shrub",
+        "storage"
+    ],
     "objects": [
         "bush",
         "weed",
