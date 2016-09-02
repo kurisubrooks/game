@@ -13,20 +13,14 @@ window.onload = function() {
             let cacheKey = Phaser.Plugin.Tiled.utils.cacheKey
 
             // Map
-            this.game.load.tiledmap(cacheKey("overworld", "tiledmap"), "assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
-            this.game.load.image(cacheKey("overworld", "tileset", "rpg"), "assets/sheets/rpg.png")
-
-            /*
-            // Map
-            this.load.tilemap("world", "assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
-            this.load.image("spritesheet", "assets/sheets/rpg.png")
-            */
+            this.game.load.tiledmap(cacheKey("overworld", "tiledmap"), "src/assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
+            this.game.load.image(cacheKey("overworld", "tileset", "rpg"), "src/assets/sheets/rpg.png")
 
             // Assets
-            this.load.image("player", "assets/player.png")
+            this.load.image("player", "src/assets/player.png")
 
             // Objects
-            let objc = [
+            let objects = [
                 "shadow",
                 "bush",
                 "weed",
@@ -47,7 +41,7 @@ window.onload = function() {
                 "treeTop2",
                 "treeTopSmall"
             ].forEach(function(sprite) {
-                preload.load.image(sprite, "assets/sprites/" + sprite + ".png")
+                preload.load.image(sprite, "src/assets/sprites/" + sprite + ".png")
             })
 
             // Debug
@@ -71,10 +65,10 @@ window.onload = function() {
             this.game.physics.p2.enable(this.player)
             this.game.camera.follow(this.player)
 
+            // Objects
             objects = this.game.add.group()
             objects.enableBody = true
 
-            // Objects
             this.spawnObjects("objects")
 
             // Movement

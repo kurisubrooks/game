@@ -139,7 +139,7 @@
     <property name="type" value="storage"/>
    </properties>
   </object>
-  <object id="43" name="crate" gid="190" x="1328" y="796.667" width="64" height="64">
+  <object id="43" name="crate" gid="190" x="1328" y="804.667" width="64" height="64">
    <properties>
     <property name="sprite" value="crate"/>
     <property name="type" value="storage"/>
@@ -524,7 +524,7 @@
   <object id="186" x="2" y="695.333" width="34" height="17.3333"/>
   <object id="187" x="87.3333" y="756" width="40.6667" height="16.6667"/>
   <object id="188" x="128" y="709.333" width="42" height="20"/>
-  <object id="189" x="1343.33" y="767.333" width="32.6667" height="30.6667"/>
+  <object id="189" x="1343.33" y="768.333" width="32.6667" height="35.6667"/>
   <object id="190" x="1210.67" y="823.333" width="18" height="17.3333"/>
   <object id="191" x="1736.67" y="1085.33" width="26" height="22.6667"/>
   <object id="192" x="1441.33" y="218" width="51.3333" height="42.6667"/>
