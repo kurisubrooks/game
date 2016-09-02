@@ -6,7 +6,7 @@ window.onload = function() {
     let game = new Phaser.Game("100%", "100%", Phaser.CANVAS, "game", {
         preload: function() {
             // Plugins
-            this.game.add.plugin(Phaser.Plugin.Debug)
+            //this.game.add.plugin(Phaser.Plugin.Debug)
             this.game.add.plugin(Phaser.Plugin.Tiled)
 
             let preload = this
