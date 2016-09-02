@@ -1,157 +1,162 @@
 let layers = {}
 let objects
+
+let cursors
+let player
 let map
 
 window.onload = function() {
     let game = new Phaser.Game("100%", "100%", Phaser.CANVAS, "game", {
-        preload: function() {
-            // Plugins
-            //this.game.add.plugin(Phaser.Plugin.Debug)
-            this.game.add.plugin(Phaser.Plugin.Tiled)
+        preload: preload,
+        create: create,
+        update: update,
+        render: render
+    })
 
-            let preload = this
-            let cacheKey = Phaser.Plugin.Tiled.utils.cacheKey
+    function preload() {
+        // Plugins
+        //this.game.add.plugin(Phaser.Plugin.Debug)
+        game.add.plugin(Phaser.Plugin.Tiled)
 
-            // Map
-            this.game.load.tiledmap(cacheKey("overworld", "tiledmap"), "src/assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
-            this.game.load.image(cacheKey("overworld", "tileset", "rpg"), "src/assets/sheets/rpg.png")
+        let cacheKey = Phaser.Plugin.Tiled.utils.cacheKey
 
-            // Assets
-            this.load.image("player", "src/assets/player.png")
+        // Map
+        game.load.tiledmap(cacheKey("overworld", "tiledmap"), "src/assets/maps/city.json", null, Phaser.Tilemap.TILED_JSON)
+        game.load.image(cacheKey("overworld", "tileset", "rpg"), "src/assets/sheets/rpg.png")
 
-            // Objects
-            let objects = [
-                "bush",
-                "weed",
-                "barrel",
-                "barrelWood",
-                "basket",
-                "crate",
-                "crateLarge",
-                "door",
-                "window",
-                "fence",
-                "fenceLeft",
-                "fenceRight",
-                "treeBase",
-                "treeBase2",
-                "treeBaseSmall",
-                "treeTop",
-                "treeTop2",
-                "treeTopSmall"
-            ].forEach(function(sprite) {
-                preload.load.image(sprite, "src/assets/sprites/" + sprite + ".png")
-            })
+        // Assets
+        game.load.image("player", "src/assets/player.png")
 
-            // Debug
-            this.game.time.advancedTiming = true
-        },
+        // Objects
+        let objects = [
+            "bush",
+            "weed",
+            "barrel",
+            "barrelWood",
+            "basket",
+            "crate",
+            "crateLarge",
+            "door",
+            "window",
+            "fence",
+            "fenceLeft",
+            "fenceRight",
+            "treeBase",
+            "treeBase2",
+            "treeBaseSmall",
+            "treeTop",
+            "treeTop2",
+            "treeTopSmall"
+        ].forEach(function(sprite) {
+            game.load.image(sprite, "src/assets/sprites/" + sprite + ".png")
+        })
 
-        create: function() {
-            // Physics
-            this.game.physics.startSystem(Phaser.Physics.P2JS)
+        // Debug
+        game.time.advancedTiming = true
+    }
 
-            // Map
-            map = this.map = this.game.add.tiledmap("overworld")
+    function create() {
+        // Physics
+        game.physics.startSystem(Phaser.Physics.P2JS)
 
-            // Collision
-            this.game.physics.p2.convertTiledCollisionObjects(map, "collision")
+        // Map
+        map = game.add.tiledmap("overworld")
 
-            // Player
-            let result = this.findObjects(this.map, "objects", "spawnPoint")
-            this.player = this.game.add.sprite(result[0].x, result[0].y, "player")
-            this.game.physics.p2.enable(this.player)
-            this.game.camera.follow(this.player)
+        // Collision
+        game.physics.p2.convertTiledCollisionObjects(map, "collision")
 
-            // Objects
-            objects = this.game.add.group()
-            objects.enableBody = true
+        // Player
+        let result = findObjects(map, "objects", "spawnPoint")
+        player = game.add.sprite(result[0].x, result[0].y, "player")
+        game.physics.p2.enable(player)
+        game.camera.follow(player)
 
-            this.spawnObjects("objects")
+        // Objects
+        objects = game.add.group()
+        objects.enableBody = true
 
-            // Movement
-            this.cursors = this.game.input.keyboard.createCursorKeys()
-        },
+        spawnObjects("objects")
 
-        update: function() {
-            // Movement
-            let speed = 250
+        // Movement
+        cursors = game.input.keyboard.createCursorKeys()
+    }
 
-            this.player.body.collideWorldBounds = true
-            this.player.body.fixedRotation = true
-            this.player.body.velocity.x = 0
-            this.player.body.velocity.y = 0
+    function update() {
+        // Movement
+        let speed = 250
 
-            // Modifier
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)) {
-                speed = 400
-            }
+        player.body.collideWorldBounds = true
+        player.body.fixedRotation = true
+        player.body.velocity.x = 0
+        player.body.velocity.y = 0
 
-            // Vertical
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.W) || this.cursors.up.isDown) {
-                this.player.body.velocity.y -= speed
-            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.S) || this.cursors.down.isDown) {
-                this.player.body.velocity.y += speed
-            }
+        // Modifier
+        if (game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)) {
+            speed = 400
+        }
 
-            // Horizontal
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.cursors.left.isDown) {
-                this.player.body.velocity.x -= speed
-            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.cursors.right.isDown) {
-                this.player.body.velocity.x += speed
-            }
-        },
+        // Vertical
+        if (game.input.keyboard.isDown(Phaser.Keyboard.W) || cursors.up.isDown) {
+            player.body.velocity.y -= speed
+        } else if (game.input.keyboard.isDown(Phaser.Keyboard.S) || cursors.down.isDown) {
+            player.body.velocity.y += speed
+        }
 
-        render: function() {
-            // Player Bounds
-            this.game.debug.body(this.player)
-            this.game.debug.body(objects)
+        // Horizontal
+        if (game.input.keyboard.isDown(Phaser.Keyboard.A) || cursors.left.isDown) {
+            player.body.velocity.x -= speed
+        } else if (game.input.keyboard.isDown(Phaser.Keyboard.D) || cursors.right.isDown) {
+            player.body.velocity.x += speed
+        }
+    }
 
-            // FPS
-            this.game.debug.text(game.time.fps, 2, 15, "#FFFF00")
-        },
+    function render() {
+        // Player Bounds
+        game.debug.body(player)
+        game.debug.body(objects)
 
-        // Spawn Items
-        spawnObjects: function(layer) {
-            let item
-            let result = this.findObjects(map, layer)
+        // FPS
+        game.debug.text(game.time.fps, 2, 15, "#FFFF00")
+    }
 
-            result.forEach(function(element) {
-                if (element.properties) {
-                    if (element.properties.sprite) {
-                        let sprite = objects.create(element.x, element.y, element.properties.sprite)
+    function spawnObjects(layer) {
+        let item
+        let result = findObjects(map, layer)
 
-                        Object.keys(element.properties).forEach(function(key) {
-                            sprite[key] = element.properties[key]
-                        })
-                    }
-                }
-            }, this)
-        },
+        result.forEach(function(element) {
+            if (element.properties) {
+                if (element.properties.sprite) {
+                    let sprite = objects.create(element.x, element.y, element.properties.sprite)
 
-        // Find Objects in a Layer containing property: type, equal to the given value
-        findObjects: function(map, layer, type) {
-            let result = []
-
-            map.objects.forEach(function(title) {
-                if (title.name === layer) {
-                    title.objects.forEach(function(element) {
-                        if (type) {
-                            if (element.properties) {
-                                if (element.properties.type === type) {
-                                    element.y -= map.tileHeight
-                                    result.push(element)
-                                }
-                            }
-                        } else {
-                            element.y -= map.tileHeight
-                            result.push(element)
-                        }
+                    Object.keys(element.properties).forEach(function(key) {
+                        sprite[key] = element.properties[key]
                     })
                 }
-            })
+            }
+        })
+    }
 
-            return result
-        }
-    })
+    function findObjects(map, layer, type) {
+        let result = []
+
+        map.objects.forEach(function(title) {
+            if (title.name === layer) {
+                title.objects.forEach(function(element) {
+                    if (type) {
+                        if (element.properties) {
+                            if (element.properties.type === type) {
+                                element.y -= map.tileHeight
+                                result.push(element)
+                            }
+                        }
+                    } else {
+                        element.y -= map.tileHeight
+                        result.push(element)
+                    }
+                })
+            }
+        })
+
+        return result
+    }
 }
