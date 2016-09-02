@@ -1,6 +1,4 @@
-let layers = {}
 let objects
-
 let cursors
 let player
 let map
@@ -15,7 +13,7 @@ window.onload = function() {
 
     function preload() {
         // Plugins
-        //this.game.add.plugin(Phaser.Plugin.Debug)
+        //game.add.plugin(Phaser.Plugin.Debug)
         game.add.plugin(Phaser.Plugin.Tiled)
 
         let cacheKey = Phaser.Plugin.Tiled.utils.cacheKey
@@ -61,6 +59,7 @@ window.onload = function() {
 
         // Map
         map = game.add.tiledmap("overworld")
+        console.log(map)
 
         // Collision
         game.physics.p2.convertTiledCollisionObjects(map, "collision")
@@ -74,6 +73,7 @@ window.onload = function() {
         // Objects
         objects = game.add.group()
         objects.enableBody = true
+        objects.sort()
 
         spawnObjects("objects")
 
@@ -107,6 +107,10 @@ window.onload = function() {
             player.body.velocity.x -= speed
         } else if (game.input.keyboard.isDown(Phaser.Keyboard.D) || cursors.right.isDown) {
             player.body.velocity.x += speed
+        }
+
+        if (game.input.keyboard.isDown(Phaser.Keyboard.ESC)) {
+            player.kill()
         }
     }
 
