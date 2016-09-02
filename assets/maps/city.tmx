@@ -543,9 +543,9 @@
   <object id="208" x="1697.33" y="299.333" width="22" height="22"/>
   <object id="209" x="1763.33" y="240" width="25.3333" height="25.3333"/>
   <object id="210" x="1880" y="248.667" width="23.3333" height="23.3333"/>
-  <object id="212" x="1139" y="573.5" width="12.5" height="37"/>
+  <object id="212" x="1140.5" y="573.5" width="11" height="37"/>
   <object id="213" x="960.5" y="573" width="12.5" height="37"/>
-  <object id="214" x="1406" y="662.5" width="13" height="35.5"/>
-  <object id="215" x="1523" y="663" width="15" height="35"/>
+  <object id="214" x="1406" y="662.5" width="9" height="35.5"/>
+  <object id="215" x="1526" y="663" width="12" height="35"/>
  </objectgroup>
 </map>

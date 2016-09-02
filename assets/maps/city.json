@@ -2321,8 +2321,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":12.5,
-                 "x":1139,
+                 "width":11,
+                 "x":1140.5,
                  "y":573.5
                 }, 
                 {
@@ -2343,7 +2343,7 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":13,
+                 "width":9,
                  "x":1406,
                  "y":662.5
                 }, 
@@ -2354,8 +2354,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":15,
-                 "x":1523,
+                 "width":12,
+                 "x":1526,
                  "y":663
                 }],
          "opacity":1,
