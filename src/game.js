@@ -21,7 +21,6 @@ window.onload = function() {
 
             // Objects
             let objects = [
-                "shadow",
                 "bush",
                 "weed",
                 "barrel",
@@ -51,7 +50,6 @@ window.onload = function() {
         create: function() {
             // Physics
             this.game.physics.startSystem(Phaser.Physics.P2JS)
-            this.game.physics.p2.restitution = 0
 
             // Map
             map = this.map = this.game.add.tiledmap("overworld")
@@ -113,22 +111,21 @@ window.onload = function() {
             this.game.debug.text(game.time.fps, 2, 15, "#FFFF00")
         },
 
-        collect: function(player, item) {
-            item.destroy()
-        },
-
-        /*
-         * Helper
-         * Functions
-         */
-
         // Spawn Items
         spawnObjects: function(layer) {
             let item
             let result = this.findObjects(map, layer)
 
             result.forEach(function(element) {
-                this.createObject(element, objects)
+                if (element.properties) {
+                    if (element.properties.sprite) {
+                        let sprite = objects.create(element.x, element.y, element.properties.sprite)
+
+                        Object.keys(element.properties).forEach(function(key) {
+                            sprite[key] = element.properties[key]
+                        })
+                    }
+                }
             }, this)
         },
 
@@ -155,19 +152,6 @@ window.onload = function() {
             })
 
             return result
-        },
-
-        // Create Sprite from Object
-        createObject: function(element, group) {
-            if (element.properties) {
-                if (element.properties.sprite) {
-                    let sprite = group.create(element.x, element.y, element.properties.sprite)
-
-                    Object.keys(element.properties).forEach(function(key) {
-                        sprite[key] = element.properties[key]
-                    })
-                }
-            }
         }
     })
 }
