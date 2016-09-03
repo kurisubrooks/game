@@ -79,7 +79,6 @@ window.onload = function() {
 
         // Map
         map = game.add.tiledmap("overworld")
-        console.log(map)
 
         // Collision
         game.physics.p2.convertTiledCollisionObjects(map, "collision")
@@ -93,8 +92,6 @@ window.onload = function() {
         // Objects
         objects = game.add.group()
         objects.enableBody = true
-        objects.sort()
-
         spawnObjects("objects")
 
         // Movement
