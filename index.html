@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <title>Phaser</title>
-    <script src="lib/phaser.js"></script>
-    <script src="lib/phaser-debug.js"></script>
-    <script src="lib/phaser-tiled.js"></script>
-    <script src="src/game.js"></script>
     <style>
+        @font-face {
+            font-family: "kenpixel";
+            src: url("src/assets/fonts/kenpixel.woff2") format("woff2"),
+                 url("src/assets/fonts/kenpixel.woff") format("woff"),
+                 url("src/assets/fonts/kenpixel.ttf")  format("truetype");
+        }
+
         html, body {
             margin: 0;
             height: 100%;
@@ -22,9 +25,14 @@
             justify-content: center;
         }
     </style>
+    <script src="lib/phaser.js"></script>
+    <script src="lib/phaser-debug.js"></script>
+    <script src="lib/phaser-tiled.js"></script>
+    <script src="src/game.js"></script>
 </head>
 <body>
 
+    <div style="position:absolute;top:0;left:0;color:transparent;font-family:'kenpixel',serif;"></div>
     <div class="container" id="game"></div>
 
 </body>
