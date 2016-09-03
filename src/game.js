@@ -1,13 +1,15 @@
 let config = {
     debug: false,
     player: {
+        name: "Ghost",
         moving: false,
         state: "still",
         speed: 250,
         health: 100,
-        baseHealth: 100,
+        mana: 500,
         stamina: 100,
-        baseStamina: 100
+        maxHealth: 100,
+        maxStamina: 100
     },
     types: [
         "spawnPoint",
@@ -42,6 +44,7 @@ let config = {
 let objects
 let cursors
 let player
+let nameplate
 let map
 
 window.onload = function() {
@@ -90,6 +93,13 @@ window.onload = function() {
         player = game.add.sprite(result[0].x, result[0].y, "player")
         game.physics.p2.enable(player)
         game.camera.follow(player)
+
+        nameplate = game.add.text(0, 0, config.player.name, {
+            font: "16px kenpixel",
+            fill: "#FFFFFF",
+            align: "center"
+        })
+        nameplate.anchor.set(0.5)
 
         // Objects
         objects = game.add.group()
@@ -141,7 +151,7 @@ window.onload = function() {
                 config.player.state = "walking"
                 config.player.speed = 250
 
-                if (config.player.stamina <= config.player.baseStamina) {
+                if (config.player.stamina <= config.player.maxStamina) {
                     config.player.stamina += 0.1
                 }
             }
@@ -151,13 +161,17 @@ window.onload = function() {
         }
 
         if (!config.player.moving) {
-            if (config.player.stamina <= config.player.baseStamina) {
+            if (config.player.stamina <= config.player.maxStamina) {
                 config.player.stamina += 0.5
             }
         }
 
-        if (config.player.stamina > config.player.baseStamina) config.player.stamina = config.player.baseStamina
+        if (config.player.stamina > config.player.maxStamina) config.player.stamina = config.player.maxStamina
         if (config.player.stamina < 0) config.player.stamina = 0
+
+        // Nameplate
+        nameplate.x = Math.floor(player.x)
+        nameplate.y = Math.floor(player.y - player.height / 2 - 10)
     }
 
     function render() {
@@ -169,8 +183,9 @@ window.onload = function() {
         game.debug.text("FPS: " + game.time.fps, 2, 15, "#FFFF00")
         game.debug.text("Speed: " + config.player.speed, 2, 35, "#FFFF00")
         game.debug.text("Health: " + config.player.health, 2, 55, "#FF4444")
-        game.debug.text("Stamina: " + config.player.stamina, 2, 75, "#44FF44")
-        game.debug.text("State: " + config.player.state, 2, 95, "#FFFF00")
+        game.debug.text("Stamina: " + Math.round(config.player.stamina * 10) / 10, 2, 75, "#44FF44")
+        game.debug.text("Mana: " + config.player.mana, 2, 95, "#0000FF")
+        game.debug.text("State: " + config.player.state, 2, 115, "#FFFF00")
     }
 
     function spawnObjects(layer) {
