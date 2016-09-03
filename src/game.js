@@ -1,7 +1,10 @@
 let config = {
     debug: false,
     player: {
+        moving: false,
+        state: "still",
         speed: 250,
+        health: 100,
         stamina: 100
     },
     types: [
@@ -124,24 +127,38 @@ window.onload = function() {
         let key = Phaser.Keyboard
 
         if (keyboard.isDown(key.W) || keyboard.isDown(key.A) || keyboard.isDown(key.S) || keyboard.isDown(key.D)) {
+            config.player.moving = true
+
             if (keyboard.isDown(key.SHIFT)) {
                 if (config.player.stamina > 0) {
-                    console.log("running")
+                    config.player.state = "running"
                     config.player.speed = 400
                     config.player.stamina -= 0.5
                 } else {
-                    console.log("exhausted")
-                    config.player.speed = 250
+                    config.player.state = "exhausted"
+                    config.player.speed = 150
                 }
             } else {
-                console.log("walking")
+                config.player.state = "walking"
                 config.player.speed = 250
 
-                if (config.player.stamina !== 100) {
+                if (config.player.stamina <= 100) {
                     config.player.stamina += 0.1
                 }
             }
+        } else {
+            config.player.moving = false
+            config.player.state = "still"
         }
+
+        if (!config.player.moving) {
+            if (config.player.stamina <= 100) {
+                config.player.stamina += 0.5
+            }
+        }
+
+        if (config.player.stamina > 100) config.player.stamina = 100
+        if (config.player.stamina < 0) config.player.stamina = 0
     }
 
     function render() {
@@ -152,7 +169,9 @@ window.onload = function() {
         // FPS
         game.debug.text("FPS: " + game.time.fps, 2, 15, "#FFFF00")
         game.debug.text("Speed: " + config.player.speed, 2, 35, "#FFFF00")
-        game.debug.text("Stamina: " + config.player.stamina, 2, 55, "#FFFF00")
+        game.debug.text("Health: " + config.player.health, 2, 55, "#FF4444")
+        game.debug.text("Stamina: " + config.player.stamina, 2, 75, "#44FF44")
+        game.debug.text("State: " + config.player.state, 2, 95, "#FFFF00")
     }
 
     function spawnObjects(layer) {
