@@ -5,7 +5,9 @@ let config = {
         state: "still",
         speed: 250,
         health: 100,
-        stamina: 100
+        baseHealth: 100,
+        stamina: 100,
+        baseStamina: 100
     },
     types: [
         "spawnPoint",
@@ -139,7 +141,7 @@ window.onload = function() {
                 config.player.state = "walking"
                 config.player.speed = 250
 
-                if (config.player.stamina <= 100) {
+                if (config.player.stamina <= config.player.baseStamina) {
                     config.player.stamina += 0.1
                 }
             }
@@ -149,12 +151,12 @@ window.onload = function() {
         }
 
         if (!config.player.moving) {
-            if (config.player.stamina <= 100) {
+            if (config.player.stamina <= config.player.baseStamina) {
                 config.player.stamina += 0.5
             }
         }
 
-        if (config.player.stamina > 100) config.player.stamina = 100
+        if (config.player.stamina > config.player.baseStamina) config.player.stamina = config.player.baseStamina
         if (config.player.stamina < 0) config.player.stamina = 0
     }
 
