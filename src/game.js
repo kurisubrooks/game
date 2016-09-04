@@ -3,12 +3,14 @@ let config = {
     player: {
         name: "Ghost",
         moving: false,
+        facing: "S",
         state: "still",
         speed: 250,
         health: 100,
         mana: 500,
         stamina: 100,
         maxHealth: 100,
+        maxMana: 500,
         maxStamina: 100
     },
     types: [
@@ -123,15 +125,19 @@ window.onload = function() {
         // Vertical
         if (game.input.keyboard.isDown(Phaser.Keyboard.W)) {
             player.body.velocity.y -= config.player.speed
+            config.player.facing = "N"
         } else if (game.input.keyboard.isDown(Phaser.Keyboard.S)) {
             player.body.velocity.y += config.player.speed
+            config.player.facing = "S"
         }
 
         // Horizontal
         if (game.input.keyboard.isDown(Phaser.Keyboard.A)) {
             player.body.velocity.x -= config.player.speed
+            config.player.facing = "W"
         } else if (game.input.keyboard.isDown(Phaser.Keyboard.D)) {
             player.body.velocity.x += config.player.speed
+            config.player.facing = "E"
         }
 
         // Stamina + Running
@@ -173,8 +179,8 @@ window.onload = function() {
         if (config.player.stamina < 0) config.player.stamina = 0
 
         // Nameplate
-        nameplate.x = Math.floor(player.x)
-        nameplate.y = Math.floor(player.y - player.height / 2 - 10)
+        nameplate.x = player.x
+        nameplate.y = player.y - player.height
     }
 
     function render() {
@@ -189,6 +195,7 @@ window.onload = function() {
         game.debug.text("Stamina: " + Math.round(config.player.stamina * 10) / 10, 2, 75, "#44FF44")
         game.debug.text("Mana: " + config.player.mana, 2, 95, "#0000FF")
         game.debug.text("State: " + config.player.state, 2, 115, "#FFFF00")
+        game.debug.text("Direction: " + config.player.facing, 2, 135, "#FFFF00")
     }
 
     function spawnObjects(layer) {
