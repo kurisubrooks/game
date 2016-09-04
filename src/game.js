@@ -111,6 +111,9 @@ window.onload = function() {
     }
 
     function update() {
+        // Interactions
+        game.input.onDown.add(interactionTrigger, this)
+
         // Movement
         player.body.collideWorldBounds = true
         player.body.fixedRotation = true
@@ -227,5 +230,18 @@ window.onload = function() {
         })
 
         return result
+    }
+
+    function interactionTrigger(pointer) {
+        if(pointer.isMouse) {
+            interactionHandler(pointer.x, pointer.y, pointer.leftButton.isDown ?
+            "left" : (pointer.rightButton.isDown ? "right" : "middle"));
+        } else {
+            // TODO: Mobile Input
+        }
+    }
+
+    function interactionHandler(x, y, click) {
+        console.log(`${x} ${y} ${click}`);
     }
 }
